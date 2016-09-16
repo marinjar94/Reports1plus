@@ -1,0 +1,27 @@
+{
+  "name": "reporttest",
+  "version": "1.0.0",
+  "description": "Report Feature",
+  "main": "index.html",
+  "scripts": {
+    "dev":"webpack-dev-server --watch",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "report",
+    "react"
+  ],
+  "author": "marinjar94",
+  "license": "ISC",
+  "dependencies": {
+    "react": "^15.3.1",
+    "react-dom": "^15.3.1"
+  },
+  "devDependencies": {
+    "babel-core": "^6.14.0",
+    "babel-loader": "^6.2.5",
+    "babel-preset-es2015": "^6.14.0",
+    "babel-preset-react": "^6.11.1",
+    "webpack": "^1.13.2"
+  }
+}

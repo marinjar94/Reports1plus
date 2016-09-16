@@ -1,0 +1,81 @@
+[{
+	"Type": "Opportunity",
+	"Id": 84096,
+	"Name": "test (1)",
+	"Link": "http://www.dev.impeltechnology.com:8830/prod1/m/main.jsp?view=main&oPageId=135650388&id=84096",
+	"Properties": {
+		"Amount": 0,
+		"Account": "No Account",
+		"Assigned": "Jesus Arturo Marin",
+		"DecisionMakers": null,
+		"Location": "No Location",
+		"Department": "No Department",
+		"Function": "No Function",
+		"EstimatedClosingDate": "No Date",
+		"RealClosingDate": true,
+		"WFType": "Guided",
+		"BusinessType": "No Type",
+		"Sector": "No Sector",
+		"Stage": "No Stage"
+	}
+}, {
+	"Type": "Opportunity",
+	"Id": 83468,
+	"Name": "TestOpportunity",
+	"Link": "http://www.dev.impeltechnology.com:8830/prod1/m/main.jsp?view=main&oPageId=135650388&id=83468",
+	"Properties": {
+		"Amount": 200,
+		"Account": "Mike Company",
+		"Assigned": "Jesus Arturo Marin",
+		"DecisionMakers": null,
+		"Location": "No Location",
+		"Department": "No Department",
+		"Function": "No Function",
+		"EstimatedClosingDate": "2016-06-07",
+		"RealClosingDate": true,
+		"WFType": "Guided",
+		"BusinessType": "Existing Business",
+		"Sector": "Telecommunications",
+		"Stage": "Mitad (58%)"
+	}
+}, {
+	"Type": "Opportunity",
+	"Id": 83473,
+	"Name": "TestOpportunityMANUAL",
+	"Link": "http://www.dev.impeltechnology.com:8830/prod1/m/main.jsp?view=main&oPageId=135650388&id=83473",
+	"Properties": {
+		"Amount": 0,
+		"Account": "Mike Company",
+		"Assigned": "Jesus Arturo Marin",
+		"DecisionMakers": null,
+		"Location": "No Location",
+		"Department": "No Department",
+		"Function": "No Function",
+		"EstimatedClosingDate": "2016-06-07",
+		"RealClosingDate": true,
+		"WFType": "Manual",
+		"BusinessType": "No Type",
+		"Sector": "Telecommunications",
+		"Stage": "Mitad (58%)"
+	}
+}, {
+	"Type": "Opportunity",
+	"Id": 84102,
+	"Name": "test mycrm",
+	"Link": "http://www.dev.impeltechnology.com:8830/prod1/m/main.jsp?view=main&oPageId=135650388&id=84102",
+	"Properties": {
+		"Amount": 333,
+		"Account": "No Account",
+		"Assigned": "Jesus Arturo Marin",
+		"DecisionMakers": null,
+		"Location": "No Location",
+		"Department": "No Department",
+		"Function": "No Function",
+		"EstimatedClosingDate": "2016-09-23",
+		"RealClosingDate": true,
+		"WFType": "Manual",
+		"BusinessType": "Existing Business",
+		"Sector": "Hospitality",
+		"Stage": "Mitad (58%)"
+	}
+}];
