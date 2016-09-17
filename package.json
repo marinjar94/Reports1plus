@@ -2,7 +2,7 @@
   "name": "reporttest",
   "version": "1.0.0",
   "description": "Report Feature",
-  "main": "index.html",
+  "main": "./build/bundle.js",
   "scripts": {
     "dev":"webpack-dev-server --watch",
     "test": "echo \"Error: no test specified\" && exit 1"
