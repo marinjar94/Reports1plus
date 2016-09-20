@@ -6,6 +6,7 @@ export default class Table extends React.Component {
    constructor() {
         super();
         
+	
     }
     
     	/*
@@ -16,12 +17,10 @@ es un <table></table>
  */
         render() {
 
-
+var query=[[1,2,3],[12,34,35],[66,77,88],[1,2,3],[12,34,35],[66,77,88]];
 /*
         	En este momento me ayudo de dos cosas para retornar una cantidad variable de elementos (en este caso, varios <Row/>):
-
         	a)El uso de curly braces {} para poder utilizar código javascript, variables y esas cosas conjuntamente con JSX
-
         	b)la función [array].map(), que me devuelve un nuevo array con valores modificados y mappeados a cada valor del array
         	sobre el cual se utilizó. Normalmente asignariamos este nuevo array a una variable, pero aquí sólo lo retornamos y
         	lo que tendremos será una lista de Componentes con props definidas por nosotros 
@@ -32,12 +31,14 @@ es un <table></table>
         
                 	<tbody>
                 		{
-                			[1,2,3,4].map(function(value){
+                			query.map(function(data){
+							console.log(query);
         				return  <Row/>
                 		
                 		        		})
-                		} 
-        
+      
+	        		} 
+         
                 	</tbody>
                 </table>)
     }
