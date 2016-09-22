@@ -3,8 +3,7 @@ import Cell from './cell.jsx';
 
 export default class Row extends React.Component {
    constructor() {
-        super();
-        
+        super();      
 		
     }
     

@@ -4,7 +4,6 @@ import Row from './row.jsx'
 export default class HeaderContainer extends React.Component {
    constructor() {
         super();
-   
     }
     
     render() {

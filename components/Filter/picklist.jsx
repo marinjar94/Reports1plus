@@ -5,7 +5,6 @@ export default class Picklist extends React.Component {
         super();
         
     }
-    
     render() {
 
     	

@@ -5,7 +5,6 @@ export default class Input extends React.Component {
         super();
         
     }
-    
     render() {
 
     	

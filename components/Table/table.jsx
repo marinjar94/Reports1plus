@@ -5,8 +5,7 @@ import RowContainer from './rowcontainer.jsx';
 
 export default class Table extends React.Component {
    constructor() {
-        super();
-        
+        super();     
 	
     }
         render() {

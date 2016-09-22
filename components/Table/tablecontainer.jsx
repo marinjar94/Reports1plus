@@ -5,7 +5,6 @@ import Table from './table.jsx';
 export default class TableContainer extends React.Component {
    constructor() {
         super();
-        
 	
     }
         render() {

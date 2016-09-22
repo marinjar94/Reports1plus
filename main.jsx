@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import ReactDOM from 'react-dom';
 import Graph from './components/Graph/graph.jsx';
 import TableContainer from './components/Table/tablecontainer.jsx';
@@ -11,8 +11,8 @@ class Reports extends React.Component { //Reports es un React.Component
     constructor() { 
         super();
       
-         }
 
+         }
          
     render() {
 
