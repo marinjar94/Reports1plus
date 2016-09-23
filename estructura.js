@@ -21,4 +21,44 @@ amount:"5000",
 account:"Pepsi",
 assigned:"Antonio",
 WorkflowStatus:"Not billed"
-}];
+},
+{
+id:"222",
+date:"10/25/2015",
+amount:"5000",
+account:"Pepsi",
+assigned:"Antonio",
+WorkflowStatus:"completed"
+},
+{
+id:"666",
+date:"10/25/2016",
+amount:"5000",
+account:"Pepsi",
+assigned:"Antonio",
+WorkflowStatus:"Not billed"
+},
+{
+id:"888",
+date:"10/25/2016",
+amount:"5000",
+account:"Pepsi",
+assigned:"Antonio",
+WorkflowStatus:"completed"
+},{
+id:"123456",
+date:"10/25/2016",
+amount:"7500",
+account:"Texas",
+assigned:"Wico",
+WorkflowStatus:"completed"
+}
+];
+
+var salesOrdersNames={id:"ID",
+date:"DATE",
+amount:"AMOUNT",
+account:"ACCOUNT",
+assigned:"ASSIGNED TO",
+WorkflowStatus:"STATUS" 
+}

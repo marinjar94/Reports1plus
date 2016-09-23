@@ -10,7 +10,6 @@ class Reports extends React.Component { //Reports es un React.Component
 
     constructor() { 
         super();
-      
 
          }
          
@@ -29,5 +28,5 @@ class Reports extends React.Component { //Reports es un React.Component
     }
 }
 
-//Esta es la función render() de ReactDOM. Como te dije, idealmente solo tenemos que llamar esta función una vez para el "container" component
+
 ReactDOM.render(<Reports/>,document.getElementById('Reports'));

@@ -10,17 +10,17 @@ export default class Table extends React.Component {
     }
         render() {
 
-console.log(salesOrders);
-console.log(salesOrders[0] );
         return(
         	<table>
         <thead>
-
+{
+<HeaderContainer names={this.props.hrow}/>
+}
 		</thead>
                 	<tbody>
                 		{
 		
-                			salesOrders.map(function(value){
+                			this.props.rowdata.map(function(value){
         				return  <RowContainer key={value.id} data={value}/>
                 		
                 		        		})

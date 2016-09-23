@@ -6,9 +6,10 @@ export default class TableContainer extends React.Component {
    constructor() {
         super();
 	
-    }
+    }   
         render() {
-return <Table/>
+            
+            return <Table hrow={salesOrdersNames} rowdata={salesOrders}/>
     }
 
 

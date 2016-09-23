@@ -9,11 +9,9 @@ export default class HeaderContainer extends React.Component {
     render() {
 
 var singleObjectArray=[];
-console.log(this.props.data);
-for (var objectprop in this.props.data){
+for (var objectprop in this.props.names){
 
-singleObjectArray.push(objectprop);
-console.log(singleObjectArray);
+singleObjectArray.push(this.props.names[objectprop]);
 } 
 
         return (
