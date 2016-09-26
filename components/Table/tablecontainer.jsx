@@ -9,7 +9,7 @@ export default class TableContainer extends React.Component {
     }   
         render() {
             
-            return <Table hrow={salesOrdersNames} rowdata={salesOrders}/>
+            return <Table hrow={this.props.hrow} rowdata={this.props.rowdata}/>
     }
 
 
