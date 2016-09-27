@@ -3,15 +3,19 @@ import React from 'react';
 export default class Input extends React.Component {
    constructor(props) {
         super(props);
-        //en este console log si me sale que tiene id
-console.log("my id is "+ this.props.id);    
+
+this.blurHandler=this.blurHandler.bind(this); 
     }
 
+blurHandler(event){
 
+ this.props.setfilter({[event.target.id] : event.target.value });
+
+}
     
     render() {
         return (
-            <input type="text" id={this.props.id} onChange={console.log("yey")} onBlur={this.props.blurHandler} ></input>
+            <input type="text" id={this.props.id} onBlur={this.blurHandler} ></input>
             )
     }
 

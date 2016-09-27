@@ -11,10 +11,16 @@ class Reports extends React.Component { //Reports es un React.Component
     constructor(props) { 
         super(props);
 var currentTime = new Date().getFullYear();
+
+//recordArray está renderizando toda la lista en el primer mount. A partir del primer "onBlur"
+//de algún filtro es cuando se utiliza filterObjArray() para filtrar, así que hay que ver
+//si deseamos que eso permanezca así o forzamos de alguna manera.
+
+//Hay que recordar que antes de mostrar cualquier cosa, el usuario debe iniciar todo cambiando el date1,
+//que es el "desde" del que hablaba Manuel Sandoval
 this.state={date1: currentTime-1, date2:currentTime, account:"",assigned:"",recordArray:this.props.unfiltered};
 this.filterObjArray = this.filterObjArray.bind(this);
 this.setfilter = this.setfilter.bind(this);
-this.blurHandler= this.blurHandler.bind(this);
 }
 
 
@@ -28,9 +34,8 @@ filterObjArray(){
 
             conditionArray.push((correctedDate>=this.state.date1? true:false));
             conditionArray.push((correctedDate<=this.state.date2)? true:false);
-            if(this.state.account!=""){ conditionArray.push((this.state.account==value.account)? true:false);}
-            if(this.state.assigned!=""){ conditionArray.push((this.state.assigned==value.assigned)? true:false);}
-                   
+            if(this.state.account!==""){ conditionArray.push((this.state.account==value.account)? true:false);}
+            if(this.state.assigned!==""){ conditionArray.push((this.state.assigned==value.assigned)? true:false);}
                    
                     return  conditionArray.every(function(condition){ return condition; });
 
@@ -39,20 +44,6 @@ filterObjArray(){
 return newArray;
 }
 
-
-blurHandler(event){
-console.log(this.state);
-console.log(this.props.id);
-//if(event.target.value=!this.state.date1){
-    //en vez de date1, deberia ser id
-    this.setState({date1:event.target.value}, function(){
-        this.setState({recordArray:this.filterObjArray()});
-    });
-//}
-     console.log(id);
-    console.log(event.target.value);
-    console.log(this.state);
-}
 
 setfilter(value){
 
@@ -65,8 +56,8 @@ setfilter(value){
 
 
         return <div>
-        <Input id={"date1"} blurHandler={this.blurHandler}/>
-        <Input id={"date2"} blurHandler={this.blurHandler}/>
+        <Input id={"date1"} setfilter={this.setfilter}/>
+        <Input id={"date2"} setfilter={this.setfilter}/>
         <Picklist/>
         <Picklist/>     
         <Graph/> 
