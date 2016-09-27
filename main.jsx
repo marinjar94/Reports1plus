@@ -14,6 +14,7 @@ var currentTime = new Date().getFullYear();
 this.state={date1: currentTime-1, date2:currentTime, account:"",assigned:"",recordArray:this.props.unfiltered};
 this.filterObjArray = this.filterObjArray.bind(this);
 this.setfilter = this.setfilter.bind(this);
+this.blurHandler= this.blurHandler.bind(this);
 }
 
 
@@ -37,8 +38,22 @@ filterObjArray(){
 
 return newArray;
 }
- 
-      
+
+
+blurHandler(event){
+console.log(this.state);
+console.log(this.props.id);
+//if(event.target.value=!this.state.date1){
+    //en vez de date1, deberia ser id
+    this.setState({date1:event.target.value}, function(){
+        this.setState({recordArray:this.filterObjArray()});
+    });
+//}
+     console.log(id);
+    console.log(event.target.value);
+    console.log(this.state);
+}
+
 setfilter(value){
 
     this.setState(value, function(){
@@ -48,14 +63,10 @@ setfilter(value){
 
     render() {
 
-//Una observación aquí: no uses <span>From <Input/></span>, haz que el componente Input incluya el span
-//Para eso son los presentational components, o "dumb" components, para que hagas markup render,
-//Así que tu Input es el que devolveria "<span>From  <input type="text" onChange={console.log("yey")} ></input></span>"
-//Y así te evitas sobrecargar este método render de tu componente principal
 
         return <div>
-        <span>From <Input/></span>
-       <span>To<Input/></span>
+        <Input id={"date1"} blurHandler={this.blurHandler}/>
+        <Input id={"date2"} blurHandler={this.blurHandler}/>
         <Picklist/>
         <Picklist/>     
         <Graph/> 

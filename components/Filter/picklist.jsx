@@ -10,6 +10,7 @@ export default class Picklist extends React.Component {
     	
         return (
            <select>
+<option value=""></option>
   <option value="123456">Cocacola</option>
   <option value="56412">Pepsicola</option>
   <option value="32245">Los Andes</option>
