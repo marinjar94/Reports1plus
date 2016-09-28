@@ -1,0 +1,16 @@
+.table-hover tbody tr:hover td {
+    background: lightskyblue;
+}
+
+.ui-datepicker-calendar {
+       display: none;
+    }
+    .ui-datepicker-month {
+       display: none;
+    }
+    .ui-datepicker-prev{
+       display: none;
+    }
+    .ui-datepicker-next{
+       display: none;
+    }

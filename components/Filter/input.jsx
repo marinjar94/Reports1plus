@@ -8,14 +8,14 @@ this.blurHandler=this.blurHandler.bind(this);
     }
 
 blurHandler(event){
-
- this.props.setfilter({[event.target.id] : event.target.value });
-
-}
     
+ this.props.setfilter({[event.target.id] : event.target.value });
+}
     render() {
+      
         return (
-            <input type="text" id={this.props.id} onBlur={this.blurHandler} ></input>
+            
+ <span>{this.props.filter}(Year): <input className={this.props.className} type="text" id={this.props.id} onBlur={this.blurHandler} ></input></span>
             )
     }
 

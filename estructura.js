@@ -55,7 +55,7 @@ WorkflowStatus:"completed"
 }
 ];
 
-var salesOrdersNames={id:"ID",
+var salesOrdersNames={id:"RIF",
 date:"DATE",
 amount:"AMOUNT",
 account:"ACCOUNT",

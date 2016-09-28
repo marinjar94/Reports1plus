@@ -11,13 +11,13 @@ export default class Table extends React.Component {
         render() {
 
         return(
-        	<table>
+        	<table className={this.props.className} >
         <thead>
 {
 <HeaderContainer names={this.props.hrow}/>
 }
 		</thead>
-                	<tbody>
+                	<tbody >
                 		{
 		
                 			this.props.rowdata.map(function(value){

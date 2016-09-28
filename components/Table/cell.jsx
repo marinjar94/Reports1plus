@@ -8,9 +8,7 @@ export default class Cell extends React.Component {
     render() {
 
     	
-        return (<td style={{border:"0.5px solid black", margin:"0px"}}>
-        
-                
+        return (<td style={{padding:"10px", margin:"10px"}}>
                 {this.props.cellNumber}
                 </td>)
     }
