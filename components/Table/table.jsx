@@ -21,6 +21,7 @@ export default class Table extends React.Component {
                 		{
 		
                 			this.props.rowdata.map(function(value){
+							
         				return  <RowContainer key={value.id} data={value}/>
                 		
                 		        		})

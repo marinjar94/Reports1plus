@@ -63,8 +63,8 @@ setfilter(value){
                      <div className="col-md-4"><Input className="datepicker" filter={"To"} id={"date2"} setfilter={this.setfilter}/></div>
                  </div>
                  <div className="row" style={{margin:"15px"}}>
-                    <div className="col-md-4"><Picklist filter={"Account"}id={"account"} setfilter={this.setfilter}/></div>
-                    <div className="col-md-4"><Picklist filter={"Assigned To"} id={"assigned"} setfilter={this.setfilter} />    </div> 
+                    <div className="col-md-4"><Picklist filter={"Account"} id={"account"} setfilter={this.setfilter} picklistdata={this.props.unfiltered}/></div>
+                    <div className="col-md-4"><Picklist filter={"Assigned To"} id={"assigned"} setfilter={this.setfilter} picklistdata={this.props.unfiltered} />    </div> 
                  </div>
                 <div className="col-lg-12" style={{margin:"15px"}}>
                     <TableContainer className="table-hover table-striped table-bordered" hrow={salesOrdersNames} rowdata={this.state.recordArray}/>
