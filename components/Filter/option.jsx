@@ -8,7 +8,7 @@ export default class Option extends React.Component {
     render() {
 
     	
-        return (<option>
+        return (<option >
                 {this.props.value}
                 </option>)
     }

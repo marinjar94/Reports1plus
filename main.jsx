@@ -10,7 +10,7 @@ class Reports extends React.Component { //Reports es un React.Component
 
     constructor(props) { 
         super(props);
-var currentTime = new Date().getFullYear();
+var currentTime = new Date();
 
 //recordArray está renderizando toda la lista en el primer mount. A partir del primer "onBlur"
 //de algún filtro es cuando se utiliza filterObjArray() para filtrar, así que hay que ver
@@ -29,13 +29,21 @@ filterObjArray(){
 
         var newArray= this.props.unfiltered.filter(function(value){
 
-            var correctedDate= new Date(value.date).getFullYear();
+            var correctedDate= new Date(value.date);
+             var correctedDate1= new Date(this.state.date1);
             var conditionArray=[];
 
-            conditionArray.push((correctedDate>=this.state.date1? true:false));
+            // Cambie el datepicker a mm/dd/yy pero ahora siempre el this.state.date1 lo pasa como string
+
+            //
+console.log(correctedDate);
+console.log(typeof(correctedDate));
+console.log(correctedDate1);
+console.log(typeof(correctedDate1));
+             if(this.state.date1!==""){conditionArray.push((correctedDate>=this.state.date1)? true:false);}
            if(this.state.date2!==""){ conditionArray.push((correctedDate<=this.state.date2)? true:false);} 
-            if(this.state.account!==""){ conditionArray.push((this.state.account==value.account)? true:false);}
-            if(this.state.assigned!==""){ conditionArray.push((this.state.assigned==value.assigned)? true:false);}
+            if(this.state.account!==" "){ conditionArray.push((this.state.account==value.account)? true:false);}
+            if(this.state.assigned!==" "){ conditionArray.push((this.state.assigned==value.assigned)? true:false);}
                    
                     return  conditionArray.every(function(condition){ return condition; });
 
