@@ -10,7 +10,8 @@ export default class RowContainer extends React.Component {
 
 var singleObjectArray=[];
 for (var objectprop in this.props.data){
-
+    
+    
 singleObjectArray.push(this.props.data[objectprop]);
 } 
 

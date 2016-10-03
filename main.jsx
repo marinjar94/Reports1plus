@@ -10,7 +10,7 @@ class Reports extends React.Component { //Reports es un React.Component
 
     constructor(props) { 
         super(props);
-var currentTime = new Date().getFullYear();
+var currentTime = new Date();
 
 //recordArray está renderizando toda la lista en el primer mount. A partir del primer "onBlur"
 //de algún filtro es cuando se utiliza filterObjArray() para filtrar, así que hay que ver
@@ -29,13 +29,21 @@ filterObjArray(){
 
         var newArray= this.props.unfiltered.filter(function(value){
 
-            var correctedDate= new Date(value.date).getFullYear();
+            var correctedDate= new Date(value.date);
+             var correctedDate1= new Date(this.state.date1);
             var conditionArray=[];
 
-            conditionArray.push((correctedDate>=this.state.date1? true:false));
+            // Cambie el datepicker a mm/dd/yy pero ahora siempre el this.state.date1 lo pasa como string
+
+            //
+console.log(correctedDate);
+console.log(typeof(correctedDate));
+console.log(correctedDate1);
+console.log(typeof(correctedDate1));
+             if(this.state.date1!==""){conditionArray.push((correctedDate>=this.state.date1)? true:false);}
            if(this.state.date2!==""){ conditionArray.push((correctedDate<=this.state.date2)? true:false);} 
-            if(this.state.account!==""){ conditionArray.push((this.state.account==value.account)? true:false);}
-            if(this.state.assigned!==""){ conditionArray.push((this.state.assigned==value.assigned)? true:false);}
+            if(this.state.account!==" "){ conditionArray.push((this.state.account==value.account)? true:false);}
+            if(this.state.assigned!==" "){ conditionArray.push((this.state.assigned==value.assigned)? true:false);}
                    
                     return  conditionArray.every(function(condition){ return condition; });
 
@@ -63,8 +71,8 @@ setfilter(value){
                      <div className="col-md-4"><Input className="datepicker" filter={"To"} id={"date2"} setfilter={this.setfilter}/></div>
                  </div>
                  <div className="row" style={{margin:"15px"}}>
-                    <div className="col-md-4"><Picklist filter={"Account"}id={"account"} setfilter={this.setfilter}/></div>
-                    <div className="col-md-4"><Picklist filter={"Assigned To"} id={"assigned"} setfilter={this.setfilter} />    </div> 
+                    <div className="col-md-4"><Picklist filter={"Account"} id={"account"} setfilter={this.setfilter} picklistdata={this.props.unfiltered}/></div>
+                    <div className="col-md-4"><Picklist filter={"Assigned To"} id={"assigned"} setfilter={this.setfilter} picklistdata={this.props.unfiltered} />    </div> 
                  </div>
                 <div className="col-lg-12" style={{margin:"15px"}}>
                     <TableContainer className="table-hover table-striped table-bordered" hrow={salesOrdersNames} rowdata={this.state.recordArray}/>
