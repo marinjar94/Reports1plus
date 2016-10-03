@@ -4,10 +4,11 @@ import Option from './option.jsx';
 export default class Picklist extends React.Component {
    constructor(props) {
         super(props);
-this.blurHandler=this.blurHandler.bind(this); 
+this.changeHandler=this.changeHandler.bind(this); 
     }
 
-blurHandler(event){
+changeHandler(event){
+  
  this.props.setfilter({[event.target.id] : event.target.value });
 }
 
@@ -32,16 +33,14 @@ this.props.picklistdata.map(function(value){
 
         				return  null
                 		
-                		        		})
-console.log(PickListArray);                                    
-
+                		        		})                                  
 //Dentro del select esta una opción de map del array 
         return (
             <div ><span>{this.props.filter} :  
-           <select className="form-control" id={this.props.id} onChange={this.blurHandler}>{
+           <select className="form-control" id={this.props.id} onChange={this.changeHandler}>{
 
 PickListArray.map(function(value){
-    return <Option value={value}/>
+    return <Option key={value} value={value}/>
 })
 
 }
