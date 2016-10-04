@@ -1,6 +1,6 @@
 ﻿import React from 'react';
 import ReactDOM from 'react-dom';
-import Graph from './components/Graph/graph.jsx';
+import GraphContainer from './components/Graph/graphcontainer.jsx';
 import TableContainer from './components/Table/tablecontainer.jsx';
 import Input from './components/Filter/input.jsx';
 import Picklist from './components/Filter/picklist.jsx';
@@ -77,15 +77,12 @@ setfilter(value){
                     <TableContainer className="table-hover table-striped table-bordered" hrow={salesOrdersNames} rowdata={this.state.recordArray}/>
                     </div>
       <hr/>
-                 <div className="col-lg-12"><Graph/></div> 
+                 <div className="col-lg-12"><GraphContainer data={this.state.recordArray}/></div> 
        <hr/>
-             </div>;
+             </div>
     }
 
-    componentDidMount() {
 
-     
-    }
 }
 
 

@@ -24,9 +24,6 @@ var id=this.props.id;
 this.props.picklistdata.map(function(value){
 							
     for (var objectprop in value){
-        //aqui quiero hacer (objectprop==id && PickListArray.indexOf(value[objectprop])!=-1) es decir
-        //que si el el objectprop es igual al id del picklist(account o assigned) y si no lo encontro dentro del PickListArray
-        //lo pushee dentro(es decir[Arturo,Antonio] si busca Michelle el resultado del indexof es -1 y luego lo pushea in y quedaria[Arturo,Antonio,Michelle])
         if(objectprop==id && PickListArray.indexOf(value[objectprop])==-1){
                     PickListArray.push(value[objectprop]);}
 } 

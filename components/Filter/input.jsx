@@ -15,7 +15,7 @@ changeHandler(target){
       
         return (
             
- <span>{this.props.filter}(Year): <input ref={(ref) => this.myTextInput = ref} className={this.props.className} type="text" id={this.props.id}></input></span>
+ <span>{this.props.filter} : <input ref={(ref) => this.myTextInput = ref} className={this.props.className} type="text" id={this.props.id}></input></span>
             )
     }
 
