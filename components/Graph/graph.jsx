@@ -25,7 +25,7 @@ componentDidMount() {
 
             $("#chart").kendoChart({
                 title: {
-                    text: "Graph Title"
+                    text: "Amount"
                 },
                 legend: {
                     position: "bottom"

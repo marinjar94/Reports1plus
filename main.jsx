@@ -62,8 +62,8 @@ setfilter(value){
 
         return <div className="container-fluid">
                  <div className="row" style={{margin:"15px"}} >
-                    <div className="col-md-4 col-xs-4"><Input className="datepicker" filter={"From"} id={"date1"} setfilter={this.setfilter}/></div>
-                     <div className="col-md-4 col-xs-4"><Input className="datepicker" filter={"To"} id={"date2"} setfilter={this.setfilter}/></div>
+                    <div className="col-md-3 col-xs-3"><Input className="datepicker" filter={"From"} id={"date1"} setfilter={this.setfilter}/></div>
+                     <div className="col-md-3 col-xs-3"><Input className="datepicker" filter={"To"} id={"date2"} setfilter={this.setfilter}/></div>
                  </div>
                  <div className="row" style={{margin:"15px"}}>
                     <div className="col-md-2 col-xs-2"><Picklist filter={"Account"} id={"account"} setfilter={this.setfilter} picklistdata={this.state.recordArray}/></div>
@@ -71,16 +71,18 @@ setfilter(value){
                     <div className="col-md-2 col-xs-2"><Picklist filter={"Status"} id={"WorkflowStatus"} setfilter={this.setfilter} picklistdata={this.state.recordArray} /></div>
                  
                  </div>
+                 
+                 <div className="row" style={{margin:"15px"}}>
+                   <div className="col-lg-6 col-xs-6"><GraphContainer data={this.state.recordArray} /></div> 
+                  </div>
+
                   <div className="row" style={{margin:"15px"}}>
                 <div className="col-lg-12 col-xs-12" style={{margin:"15px"}}>
                     <TableContainer className="table-hover table-striped table-bordered" hrow={salesOrdersNames} rowdata={this.state.recordArray}/>
                     </div>
                     </div>
-      <hr/>
-                    <div className="row" style={{margin:"15px"}}>
-                 <div className="col-lg-6 col-xs-6"><GraphContainer data={this.state.recordArray} id={"account"}/></div> 
-                  </div>
-       <hr/>
+                    
+
              </div>
     }
 

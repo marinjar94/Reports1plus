@@ -45,6 +45,7 @@ rowdatasliced.map(function(value){
         				return  total;})
 
 }
+
 totalsingle(){
 
 var total=0;
@@ -82,7 +83,8 @@ console.log("increased" +this.state.page);
             
             return (<div>
             
-            <Controls page={this.state.page} pageinc={this.pageinc} pagination={this.state.pagination}/>
+           {//<Controls page={this.state.page} pageinc={this.pageinc} pagination={this.state.pagination}/>
+       }
             <Table className={this.props.className} hrow={this.props.hrow} rowdata={this.props.rowdata}/>
             
             </div>)
