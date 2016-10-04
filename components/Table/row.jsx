@@ -15,8 +15,8 @@ export default class Row extends React.Component {
 
 
 
-                		this.props.ObjectArray.map(function(value){
-                				return <Cell key={value} cellNumber={value}/>}
+                		this.props.ObjectArray.map(function(value, index){
+                				return <Cell key={value+" "+index} cellNumber={value}/>}
 
                 	)
 				}

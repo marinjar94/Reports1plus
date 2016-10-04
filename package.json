@@ -4,7 +4,7 @@
   "description": "Report Feature",
   "main": "./build/bundle.js",
   "scripts": {
-    "dev":"webpack-dev-server --watch",
+    "start":"webpack-dev-server --content-base=build/ --hot --inline --progress",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
