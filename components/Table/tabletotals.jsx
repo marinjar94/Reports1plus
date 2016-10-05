@@ -14,9 +14,9 @@ export default class TableTotals extends React.Component {
         	<table className={this.props.className} >
         <thead>
 		<tr>
-<td>Total</td>
-<td>Page</td>
-<td>Accumulated</td>
+<td style={{padding:"10px", margin:"10px"}}>Page Total</td>
+<td style={{padding:"10px", margin:"10px"}}>Accumulated Total</td>
+<td style={{padding:"10px", margin:"10px"}}>Absolute Total</td>
 </tr>
 		</thead>
                 	<tbody >

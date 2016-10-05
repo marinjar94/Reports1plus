@@ -20,7 +20,7 @@ export default class Table extends React.Component {
                 	<tbody >
                 		{
 		
-                			this.props.rowdata.map(function(value){
+                			this.props.rowdata.slice(this.props.pageCounter-this.props.itemsPerPage, this.props.pageCounter).map(function(value){
 							
         				return  <RowContainer key={value.id} data={value}/>
                 		

@@ -20,6 +20,10 @@ this.setfilter = this.setfilter.bind(this);
 
 
 
+componentWillMount() {
+      this.setState({recordArray:this.filterObjArray()});
+}
+
 filterObjArray(){
 
         if(this.state.date1==="" && this.state.date2==="" && this.state.account==="" && this.state.assigned==="" && this.state.WorkflowStatus==="" ){
@@ -64,8 +68,6 @@ setfilter(value){
                  <div className="row" style={{margin:"15px"}} >
                     <div className="col-md-3 col-xs-3"><Input className="datepicker" filter={"From"} id={"date1"} setfilter={this.setfilter}/></div>
                      <div className="col-md-3 col-xs-3"><Input className="datepicker" filter={"To"} id={"date2"} setfilter={this.setfilter}/></div>
-                 </div>
-                 <div className="row" style={{margin:"15px"}}>
                     <div className="col-md-2 col-xs-2"><Picklist filter={"Account"} id={"account"} setfilter={this.setfilter} picklistdata={this.state.recordArray}/></div>
                     <div className="col-md-2 col-xs-2"><Picklist filter={"Assigned To"} id={"assigned"} setfilter={this.setfilter} picklistdata={this.state.recordArray} /></div> 
                     <div className="col-md-2 col-xs-2"><Picklist filter={"Status"} id={"WorkflowStatus"} setfilter={this.setfilter} picklistdata={this.state.recordArray} /></div>

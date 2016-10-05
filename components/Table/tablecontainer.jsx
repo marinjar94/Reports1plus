@@ -8,117 +8,153 @@ export default class TableContainer extends React.Component {
    constructor(props) {
         super(props);
 
-this.state={page:2,pagination:2,length:this.props.rowdata.length};
-this.totalamount=this.totalamount.bind(this);
+this.state={currentPage:1, recordsPerPage:4, numberOfRecords:this.props.rowdata.length};
+
+
+this.totalAmount=this.totalAmount.bind(this);
 this.totalsingle=this.totalsingle.bind(this);
 this.totalaccumulated=this.totalaccumulated.bind(this);
 this.pageinc=this.pageinc.bind(this);    
-this.paginationChange=this.paginationChange.bind(this);
+this.recordsPerPageChange=this.recordsPerPageChange.bind(this);
 }   
 
-totalamount(){
 
-var total=0;	
-return this.props.rowdata.map(function(value){
-    var id="amount";
-    for (var objectprop in value){
-        if(objectprop==id ){
-        total=total+parseInt(value[objectprop]);}
-        console.log("total"+total);
-} 
+componentWillMount() {
+      
+this.setState({
+                    numberOfRecords:this.props.rowdata.length,
+                    fullTotal:this.totalAmount(this.props.rowdata),
+                    accumulatedTotal:this.totalaccumulated(this.props.rowdata),
+                    singleTotal:this.totalsingle(this.props.rowdata)
+                    });
 
-        				return  total;})
+}
+
+componentWillReceiveProps(nextProps) {
+
+ //var valuesArray= nextProps.rowdata.map(el=>parseInt(el.amount));
+
+      this.setState({currentPage:1},
+       function() {
+
+        this.setState({
+                    numberOfRecords:nextProps.rowdata.length,
+                    fullTotal:this.totalAmount(nextProps.rowdata),
+                    accumulatedTotal:this.totalaccumulated(nextProps.rowdata),
+                    singleTotal:this.totalsingle(nextProps.rowdata)
+                    })
+        });
 
 
 }
 
-totalaccumulated(){
 
-var totalac=0;
-var counter=this.state.page*this.state.pagination;
-var rowdatasliced=this.props.rowdata.slice(0,counter);
-return rowdatasliced.map(function(value){
-    var id="amount";
-    for (var objectprop in value){
-        if(objectprop==id ){
-        totalac=totalac+parseInt(value[objectprop]);}
-        console.log("Acc"+total);
+totalAmount(rowData){
+
+//Returns the total amount. It maps the record array to their amount and then reduces them to a single value
+return rowData.map(el=>parseInt(el.amount)).reduce(( prev , next)=>{
+
+                            return prev + next;
+                        },0);
 } 
 
-        				return  totala;})
+
+totalaccumulated(rowData){
+
+var counter=this.state.currentPage*this.state.recordsPerPage;
+
+return rowData.slice(0,counter).map(el=>parseInt(el.amount)).reduce(( prev , next)=>{
+
+                            return prev + next;
+                        },0);
+
+} 
+
+
+totalsingle(rowData){
+
+var counter=this.state.currentPage*this.state.recordsPerPage;
+
+return rowData.slice(counter-this.state.recordsPerPage,counter).map(el=>parseInt(el.amount)).reduce(( prev , next)=>{
+
+                            return prev + next;
+                        },0);
+
 
 }
 
-totalsingle(){
-
-var totals=0;
-var counter=this.state.page*this.state.pagination;
-var rowdatasliced=this.props.rowdata.slice(counter-this.state.pagination,counter);
-return rowdatasliced.map(function(value){
-    var id="amount";
-    for (var objectprop in value){
-        if(objectprop==id ){
-        totals=totals+parseInt(value[objectprop]);}
-        console.log("single"+total);
-} 
-
-        				return  totals;})
-                        
-
-}
 
 pageinc(event){
-    if(event.target.id=="+"){
 
-    this.setState(function(previousState, currentProps) {
-        return {page: previousState.page + 1};
-        });
-        if (this.state.page==Math.ceil(this.state.length/this.state.pagination)){
-            this.setState(function(currentProps) {
-            return {page: Math.ceil(this.state.length/this.state.pagination)};
-            });
+    if(event.target.id=="+"){
+       // console.log(this.state);
+      //  console.log(Math.ceil(this.state.numberOfRecords/this.state.recordsPerPage));
+
+
+ if (this.state.currentPage==Math.ceil(this.state.numberOfRecords/this.state.recordsPerPage)){
+           /* this.setState(function(currentProps) {
+            return {currentPage: Math.ceil(this.state.numberOfRecords/this.state.recordsPerPage)};
+            });*/
+
+    }else{
+
+        this.setState(function(previousState, currentProps) {
+        return {currentPage: previousState.currentPage + 1};
+        },
+            function(){
+                this.setState({
+                    numberOfRecords:this.props.rowdata.length,
+                    fullTotal:this.totalAmount(this.props.rowdata),
+                    accumulatedTotal:this.totalaccumulated(this.props.rowdata),
+                    singleTotal:this.totalsingle(this.props.rowdata)
+                    })
+            }
+        );
+
     }
-console.log("increased" +this.state.page);
+    
+       
+
 }else{
  this.setState(function(previousState, currentProps) {
-  return {page: previousState.page - 1};
-});
-  if (this.state.page==1){
-     this.setState(function(currentProps) {
-  return {page: 1};
-});
-      console.log("no te pases manito" + this.state.page);
+  return {currentPage: (previousState.currentPage==1 )? 1 : (previousState.currentPage -1)};
+},
+            function(){
+                this.setState({
+                    numberOfRecords:this.props.rowdata.length,
+                    fullTotal:this.totalAmount(this.props.rowdata),
+                    accumulatedTotal:this.totalaccumulated(this.props.rowdata),
+                    singleTotal:this.totalsingle(this.props.rowdata)
+                    })
+            }
+        );
   }
-    console.log("Decreased" +this.state.page);
+
+    
 }
 
-}
-
-paginationChange(event){
+//Unused for now
+recordsPerPageChange(event){
 
     this.setState(function() {
-        return {pagination: event.target.value};
+        return {recordsPerPage: event.target.value};
         });
-        if (this.state.pagination>this.state.length){
+        if (this.state.recordsPerPage>this.state.numberOfRecords){
             this.setState(function() {
-            return {pagination:this.state.length};
+            return {recordsPerPage:this.state.numberOfRecords};
             });
     }
-console.log(this.state.pagination);
+
 }
 
-componentWillReceiveProps(){
-
-    this.setState(function(){return{length:this.props.rowdata.length}})
-   
-}
 
         render() {
-            return (<div>
+            return (<div className="row">
             
-           <div> <Controls page={this.state.page} pageinc={this.pageinc} pagination={this.state.pagination} paginationChange={this.paginationChange}/> paginationtotal={this.state.length} </div>
-        <div> <Table className={this.props.className} hrow={this.props.hrow} rowdata={this.props.rowdata}/></div>
-            <div><TableTotals className={this.props.className} rowdata={[this.totalacc,this.totalamount,this.totalsingle]} /></div>
+           
+        <div className="col-md-12 col-xs-12" > <Table className={this.props.className} hrow={this.props.hrow} rowdata={this.props.rowdata} pageCounter={this.state.currentPage*this.state.recordsPerPage} itemsPerPage={this.state.recordsPerPage}/></div>
+           <div className="col-md-6 col-md-offset-3 col-xs-6 col-xs-offset-3"> <Controls currentPage={this.state.currentPage} pageinc={this.pageinc} recordsPerPage={this.state.recordsPerPage} recordsPerPageChange={this.recordsPerPageChange} numberOfRecords={this.state.numberOfRecords} /></div>
+            <div className="col-md-6 col-md-offset-3 col-xs-6 col-xs-offset-3"><TableTotals className={this.props.className} rowdata={[this.state.singleTotal,this.state.accumulatedTotal,this.state.fullTotal]} /></div>
             </div>)
     }
 

@@ -33,8 +33,8 @@ this.props.picklistdata.map(function(value){
                 		        		})                                  
 //Dentro del select esta una opción de map del array 
         return (
-            <div ><span>{this.props.filter} :  
-           <select className="form-control" id={this.props.id} onChange={this.changeHandler}>{
+            <div ><span>{this.props.filter} :  {"   "}
+           <select className="k-input" id={this.props.id} onChange={this.changeHandler}>{
 
 PickListArray.map(function(value){
     return <Option key={value} value={value}/>
