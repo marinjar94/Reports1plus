@@ -11,10 +11,9 @@ Cambios visuales
 "View Graph By:"(Titulo de picklist de Graph) /DONE
 "Report Table/Report"(Titulo de la tabla con los diferentes registros)/DONE
 ----------------------Tabla Reporte:
-Orden: invoice - date - ID- Account-  Amount- assigned to- status-losdemascampos
-Campos de Amount alineados a la derecha, con currency
+Orden: invoice - date - ID- Account-  Amount- assigned to- status-losdemascampos /DONE
+Campos de Amount alineados a la derecha, con currency /Not done, DUMB
 
-RIF pasarlo a ID(Aunque en el orden sale ID, no te lo dije explicitamente) y que en donde esta haya cantidades de dinero la justificación sea hacia la derecha
 ---------------------Table Total:
 Al lado de la grafica
 absolute total ->Total
