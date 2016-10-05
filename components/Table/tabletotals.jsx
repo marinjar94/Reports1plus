@@ -14,7 +14,7 @@ export default class TableTotals extends React.Component {
             <div className="text-center">
             <h3>Totals</h3>
             <div>
-        	<table style={{float:"none",margin:"0 auto"}} className={this.props.className} >
+        	<table style={{float:"none",margin:"0 auto",border:"5px"}} className={this.props.className} >
         <thead>
 		<tr>
 <td style={{padding:"10px", margin:"10px"}}>Page Total</td>

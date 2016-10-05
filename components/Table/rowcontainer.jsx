@@ -11,8 +11,9 @@ export default class RowContainer extends React.Component {
 var singleObjectArray=[];
 for (var objectprop in this.props.data){
     
-    
-singleObjectArray.push(this.props.data[objectprop]);
+    if(objectprop =="amount"){singleObjectArray.push(' $' + this.props.data[objectprop].toLocaleString("en-US"));
+        }else{
+singleObjectArray.push(this.props.data[objectprop]);}
 } 
 
         return (

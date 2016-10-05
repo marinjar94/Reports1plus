@@ -65,6 +65,9 @@ setfilter(value){
     render() {
 
         return <div className="container-fluid">
+
+        <h1 style={{margin:"10px"}}><b>{this.props.title}</b></h1>
+
                  <div className="row" style={{margin:"15px"}}>
                  <div className="col-md-12 col-xs-12 text-center"><h3>Filter report data by:</h3></div>
                     <div className="col-md-3 col-xs-12" ><Input className="datepicker" filter={"From"} id={"date1"} setfilter={this.setfilter}/></div>
@@ -94,7 +97,7 @@ setfilter(value){
 }
 
 
-ReactDOM.render(<Reports unfilteredRecordsArray={salesOrders} recordTitles={salesOrdersNames}/>,document.getElementById('Reports'));
+ReactDOM.render(<Reports unfilteredRecordsArray={salesOrders} recordTitles={salesOrdersNames} title={"Sales Analytical Report"}/>,document.getElementById('Reports'));
 
 if (module.hot) {
   module.hot.accept();
