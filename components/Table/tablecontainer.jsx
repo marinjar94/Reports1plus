@@ -96,7 +96,7 @@ pageinc(event){
             return {currentPage: Math.ceil(this.state.numberOfRecords/this.state.recordsPerPage)};
             });*/
 
-    }else{
+    }else if(this.state.numberOfRecords>0){
 
         this.setState(function(previousState, currentProps) {
         return {currentPage: previousState.currentPage + 1};
@@ -152,9 +152,9 @@ recordsPerPageChange(event){
             return (<div className="row">
             
            
-        <div className="col-md-12 col-xs-12" > <Table className={this.props.className} hrow={this.props.hrow} rowdata={this.props.rowdata} pageCounter={this.state.currentPage*this.state.recordsPerPage} itemsPerPage={this.state.recordsPerPage}/></div>
+        <div className="col-md-10 col-md-offset-1 col-xs-12"><Table className={this.props.className} hrow={this.props.hrow} rowdata={this.props.rowdata} pageCounter={this.state.currentPage*this.state.recordsPerPage} itemsPerPage={this.state.recordsPerPage}/></div>
            <div className="col-md-6 col-md-offset-3 col-xs-6 col-xs-offset-3"> <Controls currentPage={this.state.currentPage} pageinc={this.pageinc} recordsPerPage={this.state.recordsPerPage} recordsPerPageChange={this.recordsPerPageChange} numberOfRecords={this.state.numberOfRecords} /></div>
-            <div className="col-md-6 col-md-offset-3 col-xs-6 col-xs-offset-3"><TableTotals className={this.props.className} rowdata={[this.state.singleTotal,this.state.accumulatedTotal,this.state.fullTotal]} /></div>
+            <div className="col-md-4 col-md-offset-4 col-xs-4 col-xs-offset-4"><TableTotals className={this.props.className} rowdata={[this.state.singleTotal,this.state.accumulatedTotal,this.state.fullTotal]} /></div>
             </div>)
     }
 

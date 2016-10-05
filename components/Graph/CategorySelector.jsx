@@ -4,7 +4,7 @@ class CategorySelector extends React.Component {
     constructor(props) {
         super(props);
         this.displayName = 'CategorySelector';
-        this.salesOrdersNames={id:"RIF",
+        this.salesOrdersNames={id:"ID",
 date:"DATE",
 amount:"AMOUNT",
 account:"ACCOUNT",

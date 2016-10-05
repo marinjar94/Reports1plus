@@ -13,7 +13,7 @@ class Reports extends React.Component {
 var currentTime = new Date().toISOString();
 
 
-this.state={date1: "", date2:currentTime, account:"",assigned:"", WorkflowStatus:"", recordArray:this.props.unfiltered};
+this.state={date1: "", date2:currentTime, account:"",assigned:"", WorkflowStatus:"", recordArray:this.props.unfilteredRecordsArray};
 this.filterObjArray = this.filterObjArray.bind(this);
 this.setfilter = this.setfilter.bind(this);
 }
@@ -28,10 +28,10 @@ filterObjArray(){
 
         if(this.state.date1==="" && this.state.date2==="" && this.state.account==="" && this.state.assigned==="" && this.state.WorkflowStatus==="" ){
             console.log("no filters!");
-            return this.props.unfiltered;
+            return this.props.unfilteredRecordsArray;
         }
 
-        var newArray= this.props.unfiltered.filter(function(value){
+        var newArray= this.props.unfilteredRecordsArray.filter(function(value){
 
             var correctedDate= new Date(value.date).toISOString();
             var conditionArray=[];
@@ -65,25 +65,27 @@ setfilter(value){
     render() {
 
         return <div className="container-fluid">
-                 <div className="row" style={{margin:"15px"}} >
-                    <div className="col-md-3 col-xs-3"><Input className="datepicker" filter={"From"} id={"date1"} setfilter={this.setfilter}/></div>
-                     <div className="col-md-3 col-xs-3"><Input className="datepicker" filter={"To"} id={"date2"} setfilter={this.setfilter}/></div>
-                    <div className="col-md-2 col-xs-2"><Picklist filter={"Account"} id={"account"} setfilter={this.setfilter} picklistdata={this.state.recordArray}/></div>
-                    <div className="col-md-2 col-xs-2"><Picklist filter={"Assigned To"} id={"assigned"} setfilter={this.setfilter} picklistdata={this.state.recordArray} /></div> 
-                    <div className="col-md-2 col-xs-2"><Picklist filter={"Status"} id={"WorkflowStatus"} setfilter={this.setfilter} picklistdata={this.state.recordArray} /></div>
+                 <div className="row" style={{margin:"15px"}}>
+                 <div className="col-md-12 col-xs-12 text-center"><h3>Filter report data by:</h3></div>
+                    <div className="col-md-3 col-xs-12" ><Input className="datepicker" filter={"From"} id={"date1"} setfilter={this.setfilter}/></div>
+                     <div className="col-md-3 col-xs-12"><Input className="datepicker" filter={"To"} id={"date2"} setfilter={this.setfilter}/></div>
+                    <div className="col-md-2 col-xs-12"><Picklist filter={"Account"} id={"account"} setfilter={this.setfilter} picklistdata={this.state.recordArray}/></div>
+                    <div className="col-md-2 col-xs-12"><Picklist filter={"Assigned To"} id={"assigned"} setfilter={this.setfilter} picklistdata={this.state.recordArray} /></div> 
+                    <div className="col-md-2 col-xs-12"><Picklist filter={"Status"} id={"WorkflowStatus"} setfilter={this.setfilter} picklistdata={this.state.recordArray} /></div>
                  
                  </div>
-                 
+                 <hr/>
                  <div className="row" style={{margin:"15px"}}>
-                   <div className="col-lg-6 col-xs-6"><GraphContainer data={this.state.recordArray} /></div> 
+                   <div className="col-lg-6 col-lg-offset-3 col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3 col-xs-6 col-xs-offset-3"><GraphContainer data={this.state.recordArray} object={"Sales"}/></div> 
                   </div>
-
+                 <hr/>
                   <div className="row" style={{margin:"15px"}}>
-                <div className="col-lg-12 col-xs-12" style={{margin:"15px"}}>
-                    <TableContainer className="table-hover table-striped table-bordered" hrow={salesOrdersNames} rowdata={this.state.recordArray}/>
+                <div className="col-md-12 col-xs-12 text-center" style={{margin:"15px"}}>
+                <h3>Report Table</h3>
+                    <TableContainer className="table-hover table-striped table-bordered" hrow={this.props.recordTitles} rowdata={this.state.recordArray}/>
                     </div>
                     </div>
-                    
+                    <hr/>
 
              </div>
     }
@@ -92,7 +94,7 @@ setfilter(value){
 }
 
 
-ReactDOM.render(<Reports unfiltered={salesOrders}/>,document.getElementById('Reports'));
+ReactDOM.render(<Reports unfilteredRecordsArray={salesOrders} recordTitles={salesOrdersNames}/>,document.getElementById('Reports'));
 
 if (module.hot) {
   module.hot.accept();

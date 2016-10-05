@@ -8,7 +8,7 @@ export default class Option extends React.Component {
     render() {
 
     	
-        return (<option value={this.props.value}>
+        return (<option className="text-center" value={this.props.value}>
                 {this.props.children}
                 </option>)
     }

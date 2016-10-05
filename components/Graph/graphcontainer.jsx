@@ -14,7 +14,7 @@ export default class GraphContainer extends React.Component {
 
 
     changeCategories(event){
-
+    
         this.setState({id:event.target.value});
 
     }
@@ -24,6 +24,8 @@ export default class GraphContainer extends React.Component {
 
     	var categories=[];
 var id=this.state.id;
+var seriesName=this.state.graphSeriesName;
+
 this.props.data.map(function(value){
 							
     for (var objectprop in value){
@@ -45,11 +47,14 @@ this.props.data.map(function(value){
 
     		});
 
-var series=[{name:"Values", data:seriesData}];
+var series=[{data:seriesData}];
+var object=this.props.object;
 
         return (<div>
-            <Graph series={series} categories={categories}/>
-            <CategorySelector id={"CategorySelector"} changeHandler={this.changeCategories}/>
+            <Graph series={series} categories={categories} object={object}/>
+            <h3 className="text-center">Select Graph Category</h3>
+                <CategorySelector id={"CategorySelector"} changeHandler={this.changeCategories}/>
+
             </div>)
     }
 }

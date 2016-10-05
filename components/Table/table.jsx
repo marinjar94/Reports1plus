@@ -11,7 +11,7 @@ export default class Table extends React.Component {
         render() {
 
         return(
-        	<table className={this.props.className} >
+        	<table style={{float:"none",margin:"0 auto"}} className={this.props.className} >
         <thead>
 {
 <HeaderContainer names={this.props.hrow}/>
