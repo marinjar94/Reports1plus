@@ -8,7 +8,7 @@ this.changeHandler=this.changeHandler.bind(this);
     }
 
 changeHandler(event){
-  
+  console.log("settingfilter");
  this.props.setfilter({[event.target.id] : event.target.value });
 }
 

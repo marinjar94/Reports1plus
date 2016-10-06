@@ -41,7 +41,7 @@ filterObjArray(){
            if(this.state.date2!==""){conditionArray.push((correctedDate<=(new Date(this.state.date2).toISOString()))? true:false);} 
             if(this.state.account!==""){ conditionArray.push((this.state.account===value.account)? true:false);}
             if(this.state.assigned!==""){ conditionArray.push((this.state.assigned===value.assigned)? true:false);}
-             if(this.state.WorkflowStatus!==""){ conditionArray.push((this.state.WorkflowStatus===value.WorkflowStatus)? true:false);}
+             if(this.state.WorkflowStatus!==""){ conditionArray.push((this.state.WorkflowStatus===value.this.props.extrafilterid)? true:false);}
                   
                     return  conditionArray.every(function(condition){ return condition; });
 
