@@ -25,17 +25,23 @@ resetState(){
 
 render(){
 
-	//var estructuraAUsar=this.props.objectsStructure[this.state.actualObject];
-
+if(this.state.actualObject!=="")
+	{	console.log(this.state.actualObject);
+		console.log(this.props.objectsStructure[this.state.actualObject]);
+		var currentStructure=this.props.objectsStructure[this.state.actualObject];
+		var recordArray=currentStructure.records;
+		var recordTitles=currentStructure.names;
+		
+	}
    return ( <div>
    	{this.state.actualObject!=""?<button onClick={this.resetState} className="btn btn-primary"><i className="fa fa-arrow-left" aria-hidden="true"></i> Back</button>:null}
-   	{this.state.actualObject!=""?<Reports unfilteredRecordsArray={this.props.objectsStructure} recordTitles={salesOrdersNames} title={"Sales Analytical Report"} extrafilter={"Status"} extrafilterid={"WorkflowStatus"}/> : <Objectselector handleOnClick={this.changeObjectOnClick}/> }
+   	{this.state.actualObject!=""?<Reports key={this.state.actualObject} unfilteredRecordsArray={recordArray} recordTitles={recordTitles} title={this.state.actualObject+" Analytical Report"} extrafilter={this.state.actualObject==="sales"?"Status":"Product"} extrafilterid={this.state.actualObject==="sales"?"WorkflowStatus":"product"}/> : <Objectselector handleOnClick={this.changeObjectOnClick}/> }
 </div>)
 }
 
 }
 
-ReactDOM.render(<Selector objectsStructure={salesOrders}/>,document.getElementById('Selector'));
+ReactDOM.render(<Selector objectsStructure={objectsStructure}/>,document.getElementById('Selector'));
 
 if (module.hot) {
   module.hot.accept();

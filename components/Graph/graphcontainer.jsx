@@ -53,7 +53,7 @@ var object=this.props.object;
         return (<div>
             <Graph series={series} categories={categories} object={object}/>
             <h3 className="text-center">Select Graph Category</h3>
-                <CategorySelector id={"CategorySelector"} changeHandler={this.changeCategories}/>
+                <CategorySelector key={object} id={"CategorySelector"} categories={this.props.categories} changeHandler={this.changeCategories}/>
 
             </div>)
     }

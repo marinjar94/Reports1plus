@@ -4,18 +4,6 @@ class CategorySelector extends React.Component {
     constructor(props) {
         super(props);
         this.displayName = 'CategorySelector';
-        this.salesOrdersNames={id:"ID",
-date:"DATE",
-amount:"AMOUNT",
-account:"ACCOUNT",
-assigned:"ASSIGNED TO",
-WorkflowStatus:"STATUS",
-daterequest:"REQUESTED AT",
-datedispatch:"DISPATCHED AT",
-datedelivery:"DELIVERED AT",
-datebill:"BILLED AT",
-invoice:"INVOICE N°"
-};
 
     }
 
@@ -23,10 +11,10 @@ invoice:"INVOICE N°"
     render() {
 
 var optionsArray=[];
-for(var key in this.salesOrdersNames){
+for(var key in this.props.categories){
 	//optionsArray.push(this.salesOrdersNames[key]);
-	if(key!="amount"){
-		optionsArray.push([key,this.salesOrdersNames[key]]);
+	if(key!="amount" && key!="date"){
+		optionsArray.push([key,this.props.categories[key]]);
 	}
 }
 
