@@ -8,7 +8,7 @@ export default class TableContainer extends React.Component {
    constructor(props) {
         super(props);
 
-this.state={currentPage:1, recordsPerPage:4, numberOfRecords:this.props.rowdata.length};
+this.state={currentPage:1, recordsPerPage:4, numberOfRecords:this.props.rowdata.length, fullQuantity:"",accumulatedQuantity:"", singleQuantity:""};
 
 
 this.totalAmount=this.totalAmount.bind(this);
@@ -23,10 +23,18 @@ componentWillMount() {
       
 this.setState({
                     numberOfRecords:this.props.rowdata.length,
-                    fullTotal:this.totalAmount(this.props.rowdata),
-                    accumulatedTotal:this.totalaccumulated(this.props.rowdata),
-                    singleTotal:this.totalsingle(this.props.rowdata)
+                    fullTotal:this.totalAmount(this.props.rowdata, "amount"),
+                    accumulatedTotal:this.totalaccumulated(this.props.rowdata, "amount"),
+                    singleTotal:this.totalsingle(this.props.rowdata, "amount")
                     });
+
+if(this.props.object==="products"){
+    this.setState({
+                    fullQuantity:this.totalAmount(this.props.rowdata, "quantity"),
+                    accumulatedQuantity:this.totalaccumulated(this.props.rowdata, "quantity"),
+                    singleQuantity:this.totalsingle(this.props.rowdata, "quantity")
+                });
+}
 
 }
 
@@ -39,31 +47,39 @@ componentWillReceiveProps(nextProps) {
 
         this.setState({
                     numberOfRecords:nextProps.rowdata.length,
-                    fullTotal:this.totalAmount(nextProps.rowdata),
-                    accumulatedTotal:this.totalaccumulated(nextProps.rowdata),
-                    singleTotal:this.totalsingle(nextProps.rowdata)
-                    })
+
+                    fullTotal:this.totalAmount(nextProps.rowdata, "amount"),
+                    accumulatedTotal:this.totalaccumulated(nextProps.rowdata, "amount"),
+                    singleTotal:this.totalsingle(nextProps.rowdata, "amount"),
+});
+
+    if(this.props.object==="products"){
+    this.setState({
+                    fullQuantity:this.totalAmount(this.props.rowdata, "quantity"),
+                    accumulatedQuantity:this.totalaccumulated(this.props.rowdata, "quantity"),
+                    singleQuantity:this.totalsingle(this.props.rowdata, "quantity")
+                });
+}
+
         });
-
-
 }
 
 
-totalAmount(rowData){
+totalAmount(rowData, key){
 
 //Returns the total amount. It maps the record array to their amount and then reduces them to a single value
-return rowData.map(el=>parseInt(el.amount)).reduce(( prev , next)=>{
+return rowData.map(el=>parseInt(el[key])).reduce(( prev , next)=>{
 
                             return prev + next;
                         },0);
 } 
 
 
-totalaccumulated(rowData){
+totalaccumulated(rowData, key){
 
 var counter=this.state.currentPage*this.state.recordsPerPage;
 
-return rowData.slice(0,counter).map(el=>parseInt(el.amount)).reduce(( prev , next)=>{
+return rowData.slice(0,counter).map(el=>parseInt(el[key])).reduce(( prev , next)=>{
 
                             return prev + next;
                         },0);
@@ -71,11 +87,11 @@ return rowData.slice(0,counter).map(el=>parseInt(el.amount)).reduce(( prev , nex
 } 
 
 
-totalsingle(rowData){
+totalsingle(rowData, key){
 
 var counter=this.state.currentPage*this.state.recordsPerPage;
 
-return rowData.slice(counter-this.state.recordsPerPage,counter).map(el=>parseInt(el.amount)).reduce(( prev , next)=>{
+return rowData.slice(counter-this.state.recordsPerPage,counter).map(el=>parseInt(el[key])).reduce(( prev , next)=>{
 
                             return prev + next;
                         },0);
@@ -104,10 +120,18 @@ pageinc(event){
             function(){
                 this.setState({
                     numberOfRecords:this.props.rowdata.length,
-                    fullTotal:this.totalAmount(this.props.rowdata),
-                    accumulatedTotal:this.totalaccumulated(this.props.rowdata),
-                    singleTotal:this.totalsingle(this.props.rowdata)
-                    })
+                    fullTotal:this.totalAmount(this.props.rowdata, "amount"),
+                    accumulatedTotal:this.totalaccumulated(this.props.rowdata, "amount"),
+                    singleTotal:this.totalsingle(this.props.rowdata, "amount"),
+                    });
+
+                if(this.props.object==="products"){
+
+                    this.setState({fullQuantity:this.totalAmount(this.props.rowdata, "quantity"),
+                    accumulatedQuantity:this.totalaccumulated(this.props.rowdata, "quantity"),
+                    singleQuantity:this.totalsingle(this.props.rowdata, "quantity")})
+
+                }
             }
         );
 
@@ -122,10 +146,18 @@ pageinc(event){
             function(){
                 this.setState({
                     numberOfRecords:this.props.rowdata.length,
-                    fullTotal:this.totalAmount(this.props.rowdata),
-                    accumulatedTotal:this.totalaccumulated(this.props.rowdata),
-                    singleTotal:this.totalsingle(this.props.rowdata)
-                    })
+                    fullTotal:this.totalAmount(this.props.rowdata, "amount"),
+                    accumulatedTotal:this.totalaccumulated(this.props.rowdata, "amount"),
+                    singleTotal:this.totalsingle(this.props.rowdata, "amount")
+                    });
+            
+                 if(this.props.object==="products"){
+
+                    this.setState({fullQuantity:this.totalAmount(this.props.rowdata, "quantity"),
+                    accumulatedQuantity:this.totalaccumulated(this.props.rowdata, "quantity"),
+                    singleQuantity:this.totalsingle(this.props.rowdata, "quantity")})
+
+                }
             }
         );
   }
@@ -149,9 +181,13 @@ recordsPerPageChange(event){
 
 
         render() {
+
+
+            var totalRowArray=[' $' + this.state.singleTotal.toLocaleString("en-US"),' $' +this.state.accumulatedTotal.toLocaleString("en-US"), ' $' + this.state.fullTotal.toLocaleString("en-US")];
+            var quantityRowArray=this.state.singleQuantity!==""?[this.state.singleQuantity, this.state.accumulatedQuantity, this.state.fullQuantity]:[];
             return (<div className="row">
             
-           <div className="col-md-4 col-md-offset-4 col-xs-4 col-xs-offset-4"><TableTotals className={this.props.className} rowdata={[' $' + this.state.singleTotal.toLocaleString("en-US"),' $' +this.state.accumulatedTotal.toLocaleString("en-US"), ' $' + this.state.fullTotal.toLocaleString("en-US")]} /></div>
+           <div className="col-md-4 col-md-offset-4 col-xs-4 col-xs-offset-4"><TableTotals className={this.props.className} totalsData={totalRowArray} quantityData={this.props.object==="products"?quantityRowArray:"empty"}/></div>
            <br/>
            <div className="col-md-4 col-md-offset-4 col-xs-4 col-xs-offset-4"><h3>Report Table</h3></div>
         <div className="col-md-10 col-md-offset-1 col-xs-12"><Table className={this.props.className} hrow={this.props.hrow} rowdata={this.props.rowdata} pageCounter={this.state.currentPage*this.state.recordsPerPage} itemsPerPage={this.state.recordsPerPage}/></div>

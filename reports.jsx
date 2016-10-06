@@ -66,7 +66,7 @@ setfilter(value){
 
         return <div className="container-fluid">
 
-        <h1 style={{margin:"10px"}}><b>{this.props.title}</b></h1>
+        <h1 style={{margin:"10px"}}><b>{this.props.title+" Analytical Report"}</b></h1>
 
                  <div className="row" style={{margin:"15px"}}>
                  <div className="col-md-12 col-xs-12 text-center"><h3>Filter report data by</h3></div>
@@ -84,7 +84,7 @@ setfilter(value){
                  <hr/>
                   <div className="row" style={{margin:"15px"}}>
                 <div className="col-md-12 col-xs-12 text-center" style={{margin:"15px"}}>
-                    <TableContainer className="table-hover table-striped table-bordered" hrow={this.props.recordTitles} rowdata={this.state.recordArray}/>
+                    <TableContainer className="table-hover table-striped table-bordered" hrow={this.props.recordTitles} rowdata={this.state.recordArray} object={this.props.title}/>
                     </div>
                     </div>
                     <hr/>

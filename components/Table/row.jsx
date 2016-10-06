@@ -10,7 +10,7 @@ export default class Row extends React.Component {
     render() {
 
         return (<tr>
-
+<td style={{padding:"10px", margin:"10px"}}>{this.props.children}</td>
                 	{
 
 

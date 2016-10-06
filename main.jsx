@@ -35,7 +35,7 @@ if(this.state.actualObject!=="")
 	}
    return ( <div>
    	{this.state.actualObject!=""?<button onClick={this.resetState} className="btn btn-primary"><i className="fa fa-arrow-left" aria-hidden="true"></i> Back</button>:null}
-   	{this.state.actualObject!=""?<Reports key={this.state.actualObject} unfilteredRecordsArray={recordArray} recordTitles={recordTitles} title={this.state.actualObject+" Analytical Report"} extrafilter={this.state.actualObject==="sales"?"Status":"Product"} extrafilterid={this.state.actualObject==="sales"?"WorkflowStatus":"product"}/> : <Objectselector handleOnClick={this.changeObjectOnClick}/> }
+   	{this.state.actualObject!=""?<Reports key={this.state.actualObject} unfilteredRecordsArray={recordArray} recordTitles={recordTitles} title={this.state.actualObject} extrafilter={this.state.actualObject==="sales"?"Status":"Product"} extrafilterid={this.state.actualObject==="sales"?"WorkflowStatus":"product"}/> : <Objectselector handleOnClick={this.changeObjectOnClick}/> }
 </div>)
 }
 
