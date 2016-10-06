@@ -13,7 +13,7 @@ export default class Reports extends React.Component {
 var currentTime = new Date().toISOString();
 
 
-this.state={date1: "", date2:currentTime, account:"",assigned:"", WorkflowStatus:"", recordArray:this.props.unfilteredRecordsArray};
+this.state={date1: "", date2:currentTime, account:"",assigned:"", WorkflowStatus:"",product:"", recordArray:this.props.unfilteredRecordsArray};
 this.filterObjArray = this.filterObjArray.bind(this);
 this.setfilter = this.setfilter.bind(this);
 }
@@ -41,8 +41,8 @@ filterObjArray(){
            if(this.state.date2!==""){conditionArray.push((correctedDate<=(new Date(this.state.date2).toISOString()))? true:false);} 
             if(this.state.account!==""){ conditionArray.push((this.state.account===value.account)? true:false);}
             if(this.state.assigned!==""){ conditionArray.push((this.state.assigned===value.assigned)? true:false);}
-             if(this.state.WorkflowStatus!==""){ conditionArray.push((this.state.WorkflowStatus===value.this.props.extrafilterid)? true:false);}
-                  
+             if(this.state.WorkflowStatus!==""){ conditionArray.push((this.state.WorkflowStatus===value.WorkflowStatus)? true:false);}
+             if(this.state.product!==""){ conditionArray.push((this.state.products===value.product)? true:false);}   
                     return  conditionArray.every(function(condition){ return condition; });
 
         },this);
@@ -84,7 +84,6 @@ setfilter(value){
                  <hr/>
                   <div className="row" style={{margin:"15px"}}>
                 <div className="col-md-12 col-xs-12 text-center" style={{margin:"15px"}}>
-                <h3>Report Table</h3>
                     <TableContainer className="table-hover table-striped table-bordered" hrow={this.props.recordTitles} rowdata={this.state.recordArray}/>
                     </div>
                     </div>
