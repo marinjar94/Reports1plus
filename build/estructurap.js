@@ -1,5 +1,5 @@
 //Produtcs
-var salesOrders=[{
+var products=[{
 date:"05/25/2010",
 invoice:"123",
 assigned:"Manuel",
@@ -116,7 +116,7 @@ amount:"11100"
 }
 ];
 
-var salesOrdersNames={date:"DATE",
+var productsNames={date:"DATE",
 invoice:"INVOICE N°",
 assigned:"VENDOR",
 id:"ID",
