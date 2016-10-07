@@ -1,5 +1,9 @@
-<script>
-    function accountIDtoValue(object, account){
+import React from 'react';
+import ReactDOM from 'react-dom';
+import App from './main.jsx';
+
+
+   function accountIDtoValue(object, account){
 
             object=object.map(function(element){
 
@@ -81,7 +85,7 @@ $(function(){
   rbf_selectQuery("SELECT name, CRM_SO_saleDate, CRM_SO_saleTotal, R39822, R48015, status#value, CRM_SO_dispatchDate, CRM_SO_dispatchNoteNumber, CRM_SQ_expectedDeliveryTime, CRM_SO_billDate, CRM_SO_billNumber, R38334 , id FROM CRM_salesOrder", 5000, function (array) {
 
 
-        mappedArray= array.map(element=>{
+        var mappedArray= array.map(element=>{
 
         return{
           id:element[12],
@@ -110,7 +114,7 @@ $(function(){
     rbf_selectQuery("SELECT CRM_L_lineCode, CRM_L_productCode, CRM_L_itemQuantity,  CRM_L_lineTotal, name, R29223, id FROM CRM_lineItem", 5000, function (array) {
 
 
-        mappedArray= array.map(element=>{
+        var mappedArray= array.map(element=>{
 
         return{
           id:element[6],
@@ -136,7 +140,7 @@ $(function(){
     rbf_selectQuery("SELECT name, id FROM CRM_account5", 5000, function (array) {
 
 
-        mappedArray= array.map(element=>{
+        var mappedArray= array.map(element=>{
 
         return{
           id:element[1],
@@ -153,7 +157,7 @@ $(function(){
     rbf_selectQuery("SELECT firstName, lastName, id FROM USER", 5000, function (array) {
 
 
-        mappedArray= array.map(element=>{
+        var mappedArray= array.map(element=>{
 
         return{
           id:element[2],
@@ -182,14 +186,72 @@ $(function(){
             return object.values;
         });
 
+        var salesOrdersNames={
+invoice:"INVOICE N°",
+date:"DATE",
+id:"ID",
+account:"ACCOUNT",
+amount:"AMOUNT",
+assigned:"ASSIGNED TO",
+WorkflowStatus:"STATUS",
+daterequest:"REQUESTED AT",
+numberrequest:"REQUEST N°",
+datedispatch:"DISPATCHED AT",
+numberdispatch:"DISPATCH N°",
+datedelivery:"DELIVERED AT",
+numberdelivery:"DELIVERY N°",
+datebill:"BILLED AT",
+numberbill:"BILL N°"
+};
+
+
         lineItems=lineItems.map(function(object){
             return object.values;
         });
 
-        var 
-       //console.log(account);
-       //console.log(assigned);
+        var productsNames={date:"DATE",
+invoice:"INVOICE N°",
+assigned:"VENDOR",
+id:"ID",
+account:"ACCOUNT",
+code:"CODE",
+product:"PRODUCT",
+quantity:"QUANTITY",
+amount:"TOTAL"
+};
+
+
+       var objectsStructure={
+	sales:
+	{names:salesOrdersNames,
+		records:salesOrder
+	},
+	products:
+	{
+		names:productsNames,
+		records:lineItems
+	}
+};
+
+        ReactDOM.render(<App objectsStructure={objectsStructure}/>,document.getElementById('Selector'));
+
+
     });
 });
 
-</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+if (module.hot) {
+  module.hot.accept();
+}

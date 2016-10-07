@@ -329,3 +329,5 @@ var objectsStructure={
 		records:products
 	}
 }
+
+console.log("hello structure");

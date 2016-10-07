@@ -3,8 +3,7 @@ import ReactDOM from 'react-dom';
 import Reports from './reports.jsx'
 import Objectselector from './components/Objectselector.jsx';
 
-
-class Selector extends React.Component{
+export default class Selector extends React.Component{
 constructor(props) { 
         super(props);
 
@@ -41,8 +40,5 @@ if(this.state.actualObject!=="")
 
 }
 
-ReactDOM.render(<Selector objectsStructure={objectsStructure}/>,document.getElementById('Selector'));
+	//ReactDOM.render(<Selector objectsStructure={objectsStructure}/>,document.getElementById('Selector'));
 
-if (module.hot) {
-  module.hot.accept();
-}
