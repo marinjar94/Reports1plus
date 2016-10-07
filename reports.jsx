@@ -33,16 +33,17 @@ filterObjArray(){
 
         var newArray= this.props.unfilteredRecordsArray.filter(function(value){
 
-            var correctedDate= new Date(value.date).toISOString();
+            if(value.date)
+            {var correctedDate= new Date(value.date).toISOString();}
             var conditionArray=[];
 
 
-             if(this.state.date1!=="" && this.state.date1!==null){conditionArray.push((correctedDate>=(new Date(this.state.date1).toISOString()))? true:false);}
-           if(this.state.date2!=="" && this.state.date1!==null){conditionArray.push((correctedDate<=(new Date(this.state.date2).toISOString()))? true:false);} 
-            if(this.state.account!=="" && this.state.date1!==null){ conditionArray.push((this.state.account===value.account)? true:false);}
-            if(this.state.assigned!=="" && this.state.date1!==null){ conditionArray.push((this.state.assigned===value.assigned)? true:false);}
-             if(this.state.WorkflowStatus!=="" && this.state.date1!==null){ conditionArray.push((this.state.WorkflowStatus===value.WorkflowStatus)? true:false);}
-             if(this.state.product!=="" && this.state.date1!==null){ conditionArray.push((this.state.product===value.product)? true:false);}   
+             if(this.state.date1!=="" && value.date!==null){conditionArray.push((correctedDate>=(new Date(this.state.date1).toISOString()))? true:false);}
+           if(this.state.date2!=="" && value.date!==null){conditionArray.push((correctedDate<=(new Date(this.state.date2).toISOString()))? true:false);} 
+            if(this.state.account!=="" && value.account!==null){ conditionArray.push((this.state.account===value.account)? true:false);}
+            if(this.state.assigned!=="" && value.assigned!==null){ conditionArray.push((this.state.assigned===value.assigned)? true:false);}
+             if(this.state.WorkflowStatus!=="" && value.WorkflowStatus!==null){ conditionArray.push((this.state.WorkflowStatus===value.WorkflowStatus)? true:false);}
+             if(this.state.product!=="" && value.product!==null){ conditionArray.push((this.state.product===value.product)? true:false);}   
                     return  conditionArray.every(function(condition){ return condition; });
 
         },this);
@@ -72,7 +73,7 @@ setfilter(value){
                  <div className="col-md-12 col-xs-12 text-center"><h3>Filter report data by</h3></div>
                     <div className="col-md-2 col-xs-12" ><Input className="datepicker" filter={"From"} id={"date1"} setfilter={this.setfilter}/></div>
                      <div className="col-md-2 col-xs-12"><Input className="datepicker" filter={"To"} id={"date2"} setfilter={this.setfilter}/></div>
-                    <div className="col-md-1 col-xs-12"><Picklist filter={"Account"} id={"account"} setfilter={this.setfilter} picklistdata={this.state.recordArray}/></div>
+                    <div className="col-md-1 col-xs-12"><Picklist filter={"Account "} id={"account"} setfilter={this.setfilter} picklistdata={this.state.recordArray}/></div>
                     <div className="col-md-1 col-xs-12"><Picklist filter={"Assigned"} id={"assigned"} setfilter={this.setfilter} picklistdata={this.state.recordArray} /></div> 
                     <div className="col-md-1 col-xs-12"><Picklist filter={this.props.extrafilter} id={this.props.extrafilterid} setfilter={this.setfilter} picklistdata={this.state.recordArray} /></div>
                  

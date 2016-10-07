@@ -82,26 +82,58 @@ $(function(){
         defAssigned = $.Deferred(),
         defAccount= $.Deferred();
 
-  rbf_selectQuery("SELECT name, CRM_SO_saleDate, CRM_SO_saleTotal, R39822, R48015, status#value, CRM_SO_dispatchDate, CRM_SO_dispatchNoteNumber, CRM_SQ_expectedDeliveryTime, CRM_SO_billDate, CRM_SO_billNumber, R38334 , id FROM CRM_salesOrder", 5000, function (array) {
+  rbf_selectQuery("SELECT name, createdAt, CRM_SO_saleTotal, R39822, R48015, status#value, CRM_SO_dispatchDate, CRM_SO_dispatchNoteNumber, CRM_SQ_expectedDeliveryTime, CRM_SO_billDate, CRM_SO_billNumber, R38334 , id, CRM_SO_purchaseOrderDate, CRM_SO_purchaseOrderNumber FROM CRM_salesOrder", 5000, function (array) {
 
 
         var mappedArray= array.map(element=>{
 
+        	var correctedDate= rbf_formatDate(element[1], rbf_getPageContext().getPageLocalization().getDateFormat());
+        	var correctedRequestDate= rbf_formatDate(element[13], rbf_getPageContext().getPageLocalization().getDateFormat());
+        	var correctedBillDate= rbf_formatDate(element[9], rbf_getPageContext().getPageLocalization().getDateFormat());
+        	var correctedDeliveryDate= rbf_formatDate(element[8], rbf_getPageContext().getPageLocalization().getDateFormat());
+        	var correctedDispatchDate= rbf_formatDate(element[6], rbf_getPageContext().getPageLocalization().getDateFormat());
+        
+
         return{
           id:element[12],
           values:{
-                id:element[0],
-                date:element[1],
+
+/*
+invoice:"INVOICE N°", /si
+date:"DATE",
+id:"ID",
+account:"ACCOUNT",
+amount:"AMOUNT",
+assigned:"ASSIGNED TO",
+WorkflowStatus:"STATUS",
+daterequest:"REQUESTED AT",
+numberrequest:"REQUEST N°",
+datedispatch:"DISPATCHED AT",
+numberdispatch:"DISPATCH N°",
+datedelivery:"DELIVERED AT",
+numberdelivery:"DELIVERY N°",
+datebill:"BILLED AT",
+numberbill:"BILL N°"
+
+
+*/
+
+
+invoice:element[11] || "N/A",
+  date:correctedDate,
+   id:element[0],             
+           account:element[3],   
                 amount:element[2],
-                account:element[3],
                 assigned:element[4],
                 WorkflowStatus:element[5],
-                datedispatch:element[6],
-                dispatchnumber:element[7],
-                datedelivery:element[8],
-                datebill:element[9],
-                numberbill:element[10], 
-                invoice:element[11]
+                daterequest: correctedRequestDate,
+                numberrequest:element[14] || "N/A",
+                datedispatch:correctedDispatchDate || "N/A",
+                numberdispatch:element[7] || "N/A",
+                datedelivery:correctedDeliveryDate || "N/A",      
+                datebill:correctedBillDate || "N/A",
+                numberbill:element[10] || "N/A"
+                
           }
             }
 
@@ -124,8 +156,8 @@ $(function(){
                 assigned:"", //from Sales Order
                 id:element[0],
                 account:"", //from Sales Order
-                code:element[1], 
-                product:element[4].split("X ")[1],
+                code:element[1] || "N/A", 
+                product:element[4].split("X ")[1] || "N/A",
                 quantity:element[2],
                 amount:element[3]
           }
@@ -199,7 +231,6 @@ numberrequest:"REQUEST N°",
 datedispatch:"DISPATCHED AT",
 numberdispatch:"DISPATCH N°",
 datedelivery:"DELIVERED AT",
-numberdelivery:"DELIVERY N°",
 datebill:"BILLED AT",
 numberbill:"BILL N°"
 };
