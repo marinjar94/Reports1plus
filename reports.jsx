@@ -37,12 +37,12 @@ filterObjArray(){
             var conditionArray=[];
 
 
-             if(this.state.date1!==""){conditionArray.push((correctedDate>=(new Date(this.state.date1).toISOString()))? true:false);}
-           if(this.state.date2!==""){conditionArray.push((correctedDate<=(new Date(this.state.date2).toISOString()))? true:false);} 
-            if(this.state.account!==""){ conditionArray.push((this.state.account===value.account)? true:false);}
-            if(this.state.assigned!==""){ conditionArray.push((this.state.assigned===value.assigned)? true:false);}
-             if(this.state.WorkflowStatus!==""){ conditionArray.push((this.state.WorkflowStatus===value.WorkflowStatus)? true:false);}
-             if(this.state.product!==""){ conditionArray.push((this.state.product===value.product)? true:false);}   
+             if(this.state.date1!=="" && this.state.date1!==null){conditionArray.push((correctedDate>=(new Date(this.state.date1).toISOString()))? true:false);}
+           if(this.state.date2!=="" && this.state.date1!==null){conditionArray.push((correctedDate<=(new Date(this.state.date2).toISOString()))? true:false);} 
+            if(this.state.account!=="" && this.state.date1!==null){ conditionArray.push((this.state.account===value.account)? true:false);}
+            if(this.state.assigned!=="" && this.state.date1!==null){ conditionArray.push((this.state.assigned===value.assigned)? true:false);}
+             if(this.state.WorkflowStatus!=="" && this.state.date1!==null){ conditionArray.push((this.state.WorkflowStatus===value.WorkflowStatus)? true:false);}
+             if(this.state.product!=="" && this.state.date1!==null){ conditionArray.push((this.state.product===value.product)? true:false);}   
                     return  conditionArray.every(function(condition){ return condition; });
 
         },this);

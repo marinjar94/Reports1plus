@@ -4,7 +4,7 @@ module.exports = {
   entry: './main.jsx',
   output: { path: './build/', filename: 'bundle.js' },
   watch: true,
-plugins: [
+/*plugins: [
       new webpack.optimize.UglifyJsPlugin({minimize: true}),
        new webpack.DefinePlugin({
     'process.env': {
@@ -12,7 +12,7 @@ plugins: [
     }
   })
     ],
-    devtool: "cheap-module-source-map",
+    devtool: "cheap-module-source-map",*/
   module: {
     loaders: [
       {
