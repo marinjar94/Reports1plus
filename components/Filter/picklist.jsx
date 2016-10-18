@@ -33,7 +33,7 @@ this.props.picklistdata.map(function(value){
                 		        		})                                  
 //Dentro del select esta una opción de map del array 
         return (
-            <div ><span>{this.props.filter} :  {"   "}
+            <div><div><span>{this.props.filter}</span></div>
            <select className="k-input" id={this.props.id} onChange={this.changeHandler}>{
 
 PickListArray.map(function(value){
@@ -42,7 +42,7 @@ PickListArray.map(function(value){
 
 }
 </select>
-</span>
+
 </div>
             )
     }

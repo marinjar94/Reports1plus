@@ -8,7 +8,7 @@ export default class TableContainer extends React.Component {
    constructor(props) {
         super(props);
 
-this.state={currentPage:1, recordsPerPage:4, numberOfRecords:this.props.rowdata.length, fullQuantity:"",accumulatedQuantity:"", singleQuantity:""};
+this.state={currentPage:1, recordsPerPage:10, numberOfRecords:this.props.rowdata.length, fullQuantity:"",accumulatedQuantity:"", singleQuantity:""};
 
 
 this.totalAmount=this.totalAmount.bind(this);

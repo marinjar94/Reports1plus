@@ -65,27 +65,31 @@ setfilter(value){
 
     render() {
 
-        return <div className="container-fluid">
+        return <div className="container-fluid" style={{width:"auto"}}>
 
         <h1 style={{margin:"10px"}}><b>{this.props.title+" Analytical Report"}</b></h1>
 
                  <div className="row" style={{margin:"15px"}}>
                  <div className="col-md-12 col-xs-12 text-center"><h3>Filter report data by</h3></div>
-                    <div className="col-md-2 col-xs-12" ><Input className="datepicker" filter={"From"} id={"date1"} setfilter={this.setfilter}/></div>
-                     <div className="col-md-2 col-xs-12"><Input className="datepicker" filter={"To"} id={"date2"} setfilter={this.setfilter}/></div>
-                    <div className="col-md-1 col-xs-12"><Picklist filter={"Account "} id={"account"} setfilter={this.setfilter} picklistdata={this.state.recordArray}/></div>
-                    <div className="col-md-1 col-xs-12"><Picklist filter={"Assigned"} id={"assigned"} setfilter={this.setfilter} picklistdata={this.state.recordArray} /></div> 
-                    <div className="col-md-1 col-xs-12"><Picklist filter={this.props.extrafilter} id={this.props.extrafilterid} setfilter={this.setfilter} picklistdata={this.state.recordArray} /></div>
-                 
+                 <hr/>
+                    <div className="col-md-6 col-xs-12 text-center" ><Input className="datepicker" filter={"From"} id={"date1"} setfilter={this.setfilter}/></div>
+                     <div className="col-md-6 col-xs-12 text-center"><Input className="datepicker" filter={"To"} id={"date2"} setfilter={this.setfilter}/></div>
+                    
                  </div>
+                 <div className="row" style={{margin:"15px"}}>
+                 <div className="col-md-4 col-xs-12 text-center"><Picklist filter={"Account "} id={"account"} setfilter={this.setfilter} picklistdata={this.state.recordArray}/></div>
+                    <div className="col-md-4 col-xs-12 text-center"><Picklist filter={"Assigned"} id={"assigned"} setfilter={this.setfilter} picklistdata={this.state.recordArray} /></div> 
+                    <div className="col-md-4 col-xs-12 text-center "><Picklist filter={this.props.extrafilter} id={this.props.extrafilterid} setfilter={this.setfilter} picklistdata={this.state.recordArray} /></div></div>
                  <hr/>
                  <div className="row" style={{margin:"15px"}}>
                    <div className="col-lg-6 col-lg-offset-3 col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3 col-xs-6 col-xs-offset-3"><GraphContainer data={this.state.recordArray} object={this.props.title} categories={this.props.recordTitles}/></div> 
                   </div>
                  <hr/>
+                 <div className="container-fluid">
                   <div className="row" style={{margin:"15px"}}>
                 <div className="col-md-12 col-xs-12 text-center" style={{margin:"15px"}}>
                     <TableContainer className="table-hover table-striped table-bordered" hrow={this.props.recordTitles} rowdata={this.state.recordArray} object={this.props.title}/>
+                    </div>
                     </div>
                     </div>
                     <hr/>

@@ -148,6 +148,7 @@ invoice:element[11] || "N/A",
 
         var mappedArray= array.map(element=>{
 
+
         return{
           id:element[6],
           values:{
@@ -157,7 +158,7 @@ invoice:element[11] || "N/A",
                 id:element[0],
                 account:"", //from Sales Order
                 code:element[1] || "N/A", 
-                product:element[4].split("X ")[1] || "N/A",
+                product:element[4].toString().split("X")[1] || "N/A",
                 quantity:element[2],
                 amount:element[3]
           }
