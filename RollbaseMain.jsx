@@ -59,6 +59,7 @@ return element;
                     } else */ 
                     
                     if (element.values.invoice == salesOrder.id) {
+                        
                         element.values.assigned = salesOrder.values.assigned;
                         element.values.account = salesOrder.values.account;
                         element.values.date = salesOrder.values.date;
@@ -76,7 +77,7 @@ return element;
 
 
 
-$(function(){
+rb.newui.util.addEventListener(rb.newui.util.customEvents.rbs_pageRender, function () {
     var defSalesOrder = $.Deferred(),
         defLineItems = $.Deferred(),
         defAssigned = $.Deferred(),
@@ -126,7 +127,7 @@ invoice:element[11] || "N/A",
                 amount:element[2],
                 assigned:element[4],
                 WorkflowStatus:element[5],
-                daterequest: correctedRequestDate,
+                daterequest: correctedRequestDate|| "N/A",
                 numberrequest:element[14] || "N/A",
                 datedispatch:correctedDispatchDate || "N/A",
                 numberdispatch:element[7] || "N/A",
@@ -170,7 +171,7 @@ invoice:element[11] || "N/A",
     });
 
 //Accounts
-    rbf_selectQuery("SELECT name, id FROM CRM_account5", 5000, function (array) {
+    rbf_selectQuery("SELECT name, id FROM CRM_account5", 50000, function (array) {
 
 
         var mappedArray= array.map(element=>{
@@ -183,7 +184,6 @@ invoice:element[11] || "N/A",
             }
 
         });
-       
         defAccount.resolve(mappedArray);
     });
 
@@ -211,9 +211,7 @@ invoice:element[11] || "N/A",
         salesOrder=assignedIDtoValue(salesOrder,assigned);
         lineItems=lineItemFillFromSalesOrder(lineItems,salesOrder);
         //var salesOrders = JSON.stringify(salesOrder);
-       
-       console.log(salesOrder);
-        console.log(lineItems);
+    
 
         salesOrder=salesOrder.map(function(object){
             return object.values;
@@ -265,9 +263,8 @@ amount:"TOTAL"
 	}
 };
 
-        ReactDOM.render(<App objectsStructure={objectsStructure}/>,document.getElementById('Selector'));
 
-
+       ReactDOM.render(<App objectsStructure={objectsStructure}/>,document.getElementById('Selector'));
     });
 });
 

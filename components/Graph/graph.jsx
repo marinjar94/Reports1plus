@@ -42,7 +42,10 @@ componentDidMount() {
                     }
                 },
                 categoryAxis: {
-                    categories:categories ,
+                    categories:categories ,  
+                    labels: {
+                     rotation: -45     
+                     },
                     majorGridLines: {
                         visible: false
                     }

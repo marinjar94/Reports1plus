@@ -13,7 +13,7 @@ export default class Reports extends React.Component {
 var currentTime = new Date().toISOString();
 
 
-this.state={date1: "", date2:currentTime, account:"",assigned:"", WorkflowStatus:"",product:"", recordArray:this.props.unfilteredRecordsArray};
+this.state={date1: "", date2:"", account:"",assigned:"", WorkflowStatus:"",product:"", recordArray:this.props.unfilteredRecordsArray};
 this.filterObjArray = this.filterObjArray.bind(this);
 this.setfilter = this.setfilter.bind(this);
 }
@@ -27,7 +27,8 @@ componentWillMount() {
 filterObjArray(){
 
         if(this.state.date1==="" && this.state.date2==="" && this.state.account==="" && this.state.assigned==="" && this.state.WorkflowStatus==="" ){
-            console.log("no filters!");
+            console.log("no filters! and this is the unfiltered araay: ");
+            console.log(this.state.recordArray);
             return this.props.unfilteredRecordsArray;
         }
 
@@ -65,7 +66,7 @@ setfilter(value){
 
     render() {
 
-        return <div className="container-fluid" style={{width:"auto"}}>
+        return <div id="Reports" className="container" style={{width:"auto"}}>
 
         <h1 style={{margin:"10px"}}><b>{this.props.title+" Analytical Report"}</b></h1>
 
@@ -85,7 +86,7 @@ setfilter(value){
                    <div className="col-lg-6 col-lg-offset-3 col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3 col-xs-6 col-xs-offset-3"><GraphContainer data={this.state.recordArray} object={this.props.title} categories={this.props.recordTitles}/></div> 
                   </div>
                  <hr/>
-                 <div className="container-fluid">
+                 <div className="container">
                   <div className="row" style={{margin:"15px"}}>
                 <div className="col-md-12 col-xs-12 text-center" style={{margin:"15px"}}>
                     <TableContainer className="table-hover table-striped table-bordered" hrow={this.props.recordTitles} rowdata={this.state.recordArray} object={this.props.title}/>
