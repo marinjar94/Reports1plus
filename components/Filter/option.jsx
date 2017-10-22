@@ -1,17 +1,8 @@
 import React from 'react';
- 
-export default class Option extends React.Component {
-   constructor() {
-        super();
-    }
 
-    render() {
+const Option = ({ value }) =>
+  (<option >
+    {value}
+  </option>);
 
-    	
-        return (<option >
-                {this.props.value}
-                </option>)
-    }
-
-
-}
+export default Option;
