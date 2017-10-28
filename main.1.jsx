@@ -27,7 +27,6 @@ componentWillMount() {
 filterObjArray(){
 
         if(this.state.date1==="" && this.state.date2==="" && this.state.account==="" && this.state.assigned==="" && this.state.WorkflowStatus==="" ){
-            console.log("no filters!");
             return this.props.unfilteredRecordsArray;
         }
 

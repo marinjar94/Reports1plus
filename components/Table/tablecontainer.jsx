@@ -103,10 +103,6 @@ return rowData.slice(counter-this.state.recordsPerPage,counter).map(el=>parseInt
 pageinc(event){
 
     if(event.target.id=="+"){
-       // console.log(this.state);
-      //  console.log(Math.ceil(this.state.numberOfRecords/this.state.recordsPerPage));
-
-
  if (this.state.currentPage==Math.ceil(this.state.numberOfRecords/this.state.recordsPerPage)){
            /* this.setState(function(currentProps) {
             return {currentPage: Math.ceil(this.state.numberOfRecords/this.state.recordsPerPage)};
@@ -181,8 +177,6 @@ recordsPerPageChange(event){
 
 
         render() {
-
-
             var totalRowArray=[' $' + this.state.singleTotal.toLocaleString("en-US"),' $' +this.state.accumulatedTotal.toLocaleString("en-US"), ' $' + this.state.fullTotal.toLocaleString("en-US")];
             var quantityRowArray=this.state.singleQuantity!==""?[this.state.singleQuantity, this.state.accumulatedQuantity, this.state.fullQuantity]:[];
             return (<div className="row">
